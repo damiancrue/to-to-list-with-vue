@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container mt-5" id="app">
+          
+          <h3>{{titulo}}</h3>
+            <input type="text" class="form-control my-3" v-model="nuevaTarea" v-on:keyup.enter="agregarTarea">
+            <button class="btn btn-primary" @click="agregarTarea" >Agregar</button>
+            <div class="my-3" v-for="(e,index) in tareas">
+
+                <div role="alert" :class="['alert', e.estado?'alert-success':'alert-danger']" >
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                           {{index+1}} - {{e.nombre}}
+                        </div>
+                        <div>
+                            <button class="btn btn-success btn-sm" @click="editarTarea(index)">OK </button>
+                            <button class="btn btn-danger btn-sm" @click="eliminarTarea(index)"> X </button>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+     </div>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script> 
+  </body>
+</html>
